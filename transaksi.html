@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaksi</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function validateForm() {
+            var nama = document.getElementById("nama").value;
+            var alamat = document.getElementById("alamat").value;
+            var email = document.getElementById("email").value;
+            var telepon = document.getElementById("telepon").value;
+            var produk = document.getElementById("produk").value;
+
+            if (nama === "" || alamat === "" || email === "" || telepon === "" || produk === "") {
+                alert("Semua field harus diisi!");
+                return false;
+            } else {
+                generateInvoice(nama, alamat, email, telepon, produk);
+                return false; // Prevent form submission to stay on the same page
+            }
+        }
+
+        function generateInvoice(nama, alamat, email, telepon, produk) {
+            var harga;
+            switch (produk) {
+                case 'anggrek':
+                    harga = 'Rp 20.000';
+                    break;
+                case 'mawar':
+                    harga = 'Rp 10.000';
+                    break;
+                case 'kuping_gajah':
+                    harga = 'Rp 11.000';
+                    break;
+                case 'lidah_mertua':
+                    harga = 'Rp 5.000';
+                    break;
+                case 'aglaonema':
+                    harga = 'Rp 12.000';
+                    break;
+                default:
+                    harga = 'Rp 0';
+            }
+
+            // Store data in local storage
+            localStorage.setItem('invoice-nama', nama);
+            localStorage.setItem('invoice-alamat', alamat);
+            localStorage.setItem('invoice-email', email);
+            localStorage.setItem('invoice-telepon', telepon);
+            localStorage.setItem('invoice-produk', produk);
+            localStorage.setItem('invoice-harga', harga);
+
+            // Redirect to invoice page
+            window.location.href = 'invoice.html';
+        }
+
+        // Load invoice data when the page loads
+        function loadInvoice() {
+            if (window.location.pathname.endsWith('invoice.html')) {
+                document.getElementById('invoice-nama').textContent = localStorage.getItem('invoice-nama');
+                document.getElementById('invoice-alamat').textContent = localStorage.getItem('invoice-alamat');
+                document.getElementById('invoice-email').textContent = localStorage.getItem('invoice-email');
+                document.getElementById('invoice-telepon').textContent = localStorage.getItem('invoice-telepon');
+                document.getElementById('invoice-produk').textContent = localStorage.getItem('invoice-produk');
+                document.getElementById('invoice-harga').textContent = localStorage.getItem('invoice-harga');
+            }
+        }
+
+        window.onload = loadInvoice;
+    </script>
+</head>
+<body>
+    <h2>Formulir Transaksi</h2>
+    <form onsubmit="return validateForm()">
+        <label for="nama">Nama:</label><br>
+        <input type="text" id="nama" name="nama" required><br><br>
+        <label for="alamat">Alamat:</label><br>
+        <textarea id="alamat" name="alamat" required></textarea><br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="telepon">Nomor Telepon:</label><br>
+        <input type="tel" id="telepon" name="telepon" required><br><br>
+        <label for="produk">Produk:</label><br>
+        <select id="produk" name="produk" required>
+            <option value="">Pilih Produk</option>
+            <option value="anggrek">Anggrek</option>
+            <option value="mawar">Mawar</option>
+            <option value="kuping_gajah">Kuping Gajah</option>
+            <option value="lidah_mertua">Lidah Mertua</option>
+            <option value="aglaonema">Aglaonema</option>
+        </select><br><br>
+        <input type="submit" value="Kirim">
+    </form>
+</body>
+</html>

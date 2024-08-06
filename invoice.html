@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        window.onload = function() {
+            document.getElementById('invoice-nama').textContent = localStorage.getItem('invoice-nama');
+            document.getElementById('invoice-alamat').textContent = localStorage.getItem('invoice-alamat');
+            document.getElementById('invoice-email').textContent = localStorage.getItem('invoice-email');
+            document.getElementById('invoice-telepon').textContent = localStorage.getItem('invoice-telepon');
+            document.getElementById('invoice-produk').textContent = localStorage.getItem('invoice-produk');
+            document.getElementById('invoice-harga').textContent = localStorage.getItem('invoice-harga');
+        };
+    </script>
+</head>
+<body>
+    <h2>Invoice</h2>
+    <div id="invoice-container">
+        <p><strong>Nama:</strong> <span id="invoice-nama"></span></p>
+        <p><strong>Alamat:</strong> <span id="invoice-alamat"></span></p>
+        <p><strong>Email:</strong> <span id="invoice-email"></span></p>
+        <p><strong>Nomor Telepon:</strong> <span id="invoice-telepon"></span></p>
+        <p><strong>Produk:</strong> <span id="invoice-produk"></span></p>
+        <p><strong>Harga:</strong> <span id="invoice-harga"></span></p>
+    </div>
+    <button onclick="window.print()">Print Invoice</button>
+</body>
+</html>

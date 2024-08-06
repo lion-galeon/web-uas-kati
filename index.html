@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Tanaman Hias</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Toko Tanaman Hias</h1>
+        <div class="marquee">
+            <p>Selamat Datang Di Toko Saya</p>
+        </div>
+    </header>
+    <nav>
+        <a href="produk.html" target="content-frame">Produk</a>
+        <a href="transaksi.html" target="content-frame">Transaksi</a>
+        <a href="tentang.html" target="content-frame">About Us</a>
+    </nav>
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div class="main-container">
+        <div class="main-content">
+            <iframe name="content-frame" src="produk.html"></iframe>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <button class="close-btn" onclick="toggleSidebar()">✕</button>
+            <h3>Produk</h3>
+            <ul>
+                <li><a href="produk.html#anggrek">Anggrek</a></li>
+                <li><a href="produk.html#mawar">Mawar</a></li>
+                <li><a href="produk.html#lidah_mertua">Lidah Mertua</a></li>
+                <li><a href="produk.html#kuping_gajah">Kuping Gajah</a></li>
+                <li><a href="produk.html#aglaonema">Aglaonema</a></li>
+            </ul>
+            <h3>Promo</h3>
+            <p>Dapatkan diskon 10% untuk pembelian tanaman hias lebih dari 3 pot!</p>
+            <h3>Diskon</h3>
+            <p>Promo spesial: Diskon 5% untuk setiap pembelian di atas Rp 50.000.</p>
+        </div>
+    </div>
+    <footer>
+        <div class="marquee">
+            <p>Selamat Berbelanja Di Toko Saya</p>
+        </div>
+        <p>&copy; 2023 Toko Tanaman Hias</p>
+    </footer>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.querySelector('.main-content');
+            sidebar.classList.toggle('show');
+            mainContent.classList.toggle('shifted');
+        }
+    </script>
+</body>
+</html>
